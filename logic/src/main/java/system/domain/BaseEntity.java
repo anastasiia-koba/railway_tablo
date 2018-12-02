@@ -1,7 +1,8 @@
-package system.entity;
+package system.domain;
 
-import lombok.EqualsAndHashCode;
+
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.io.Serializable;
  */
 @Getter
 @Setter
-@EqualsAndHashCode
+@NoArgsConstructor
 @MappedSuperclass
 public abstract class BaseEntity  implements Serializable {
 
@@ -22,4 +23,5 @@ public abstract class BaseEntity  implements Serializable {
 
     @Column(name = "deleted")
     private Boolean deleted = false;
+
 }
