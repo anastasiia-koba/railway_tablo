@@ -4,17 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>Railway tablo</h:head>
 <h:body>
     <h:form>
-        <!--<h3>Select station</h3>-->
-        <h:selectOneMenu value="#{station.name}">
-            <f:selectItems value="#{formBean.stations}" var="station" itemValue="#{station.name}" />
+        <h3>Select station</h3>
+        <h:selectOneMenu>
+            <f:selectItems value="#{formBean.stations}" var="station" itemLabel="#{station.name}" itemValue="#{station.id}" />
         </h:selectOneMenu>
-        <h:selectOneMenu label="Select station" >
-            <f:selectItems value="#{formBean.stations}" var="station" itemValue="#{station.name}" />
-        </h:selectOneMenu>
+        <h:outputLabel for="inline" value="Select Date" />
+        <p:calendar id="inline" value="#{calendar.date}" mode="popup" />
         <h:commandButton value = "Submit" action = "result" />
     </h:form>
 

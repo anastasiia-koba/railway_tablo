@@ -18,18 +18,18 @@ public class FormBean implements Serializable {
     private StationManager stationManager;
 
     private LocalDate currentDate;
-    private String name;
+    private Station station;
 
     public List<Station> getStations() {
         return stationManager.findAll();
     }
 
-    public String getName() {
-        return name;
+    public Station getStation() {
+        return station;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStation(Station station) {
+        this.station = station;
     }
 
     public LocalDate getCurrentDate() {
