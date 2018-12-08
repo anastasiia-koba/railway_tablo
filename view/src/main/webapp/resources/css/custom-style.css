@@ -1,0 +1,45 @@
+.rout-table{
+    border-collapse:collapse;
+    margin: 0 auto;
+}
+
+.rout-table-header{
+    text-align:center;
+    background:none repeat scroll 0 0 #E5E5E5;
+    border-bottom:1px solid #BBBBBB;
+    padding:16px;
+    font-size: 20px;
+}
+
+.rout-table-odd-row{
+    text-align:center;
+    background:none repeat scroll 0 0 #FFFFFFF;
+    border-top:1px solid #BBBBBB;
+    font-size: 20px;
+}
+
+.rout-table-even-row{
+    text-align:center;
+    background:none repeat scroll 0 0 #F9F9F9;
+    border-top:1px solid #BBBBBB;
+    font-size: 30px;
+}
+
+.rout-form{
+    text-align:center;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+.select{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.button{
+    font-size: 20px;
+    margin: 10px;
+    background-color:blue;
+    color:white;
+}

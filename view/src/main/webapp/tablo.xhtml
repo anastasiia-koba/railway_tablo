@@ -6,21 +6,50 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head>Railway tablo</h:head>
+<h:head>
+    <h:outputStylesheet library="css" name="custom-style.css"  />
+</h:head>
 <h:body>
-    <h:form>
-        <h3>Select station</h3>
-        <h:selectOneMenu>
-            <f:selectItems value="#{formBean.stations}" var="station" itemLabel="#{station.name}" itemValue="#{station.id}" />
+    <h:form styleClass="rout-form">
+        <h:outputLabel for="inline" value="Select Station"/>
+        <h:selectOneMenu value="#{formBean.station}" required="true" styleClass="select">
+            <f:selectItems value="#{formBean.stations}" var="station" itemLabel="#{station.name}"
+                           itemValue="#{station.name}"/>
         </h:selectOneMenu>
-        <h:outputLabel for="inline" value="Select Date" />
-        <p:calendar id="inline" value="#{calendar.date}" mode="popup" />
-        <h:commandButton value = "Submit" action = "result" />
+        <h:outputLabel for="inline" value="Select Date"/>
+        <p:calendar id="inline" value="#{formBean.currentDate}" mode="popup" required="true"/>
+        <h:commandButton action="#{formBean.getFinalRouts}" value="Submit" styleClass="button"/>
     </h:form>
 
-    <h:dataTable value="#{formBean.stations}" var="station">
+    <h:dataTable value="#{formBean.finalRouts}" var="rout" styleClass="rout-table"
+                 headerClass="rout-table-header"
+                 rowClasses="rout-table-odd-row,rout-table-even-row">
         <h:column>
-            <h:outputText value="#{station.name}"/>
+            <f:facet name="header">Rout</f:facet>
+            <h:outputText value="#{rout.rout.routName}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">From</f:facet>
+            <h:outputText value="#{rout.rout.startStation.name}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">To</f:facet>
+            <h:outputText value="#{rout.rout.endStation.name}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Arrival time</f:facet>
+            <h:outputText value="#{formBean.getArrivalTime(rout.id)}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Departure time</f:facet>
+            <h:outputText value="#{formBean.getDepartureTime(rout.id)}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">Status</f:facet>
+            <h:form>
+                <h:outputText id="status" value="#{formBean.getStatus(rout.id)}"/>
+                <p:poll interval="1" update="status"/>
+            </h:form>
         </h:column>
     </h:dataTable>
 </h:body>

@@ -14,8 +14,6 @@
 
   <properties>
     <lombok.version>1.18.0</lombok.version>
-    <hibernate-validator.version>6.0.11.Final</hibernate-validator.version>
-    <hibernate-core.version>5.2.17.Final</hibernate-core.version>
   </properties>
 
   <dependencies>
@@ -25,6 +23,21 @@
       <version>${lombok.version}</version>
       <scope>provided</scope>
     </dependency>
-
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-maven-plugin</artifactId>
+        <version>2.0.0.Final</version>
+        <configuration>
+          <hostname>localhost</hostname>
+          <port>9990</port>
+          <username>admin</username>
+          <password>admin</password>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

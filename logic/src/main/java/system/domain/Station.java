@@ -18,4 +18,8 @@ public class Station extends BaseEntity {
 
     @Column(name = "stationname")
     private String name;
+
+    public Station(String name) {
+        this.name = name;
+    }
 }
