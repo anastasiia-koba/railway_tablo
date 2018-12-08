@@ -4,19 +4,14 @@ import system.domain.FinalRout;
 import system.domain.Rout;
 import system.domain.RoutSection;
 import system.domain.Station;
-import system.mdb.NotificationBean;
 
-import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.sql.Time;
 import java.time.LocalTime;
 import java.util.*;
-import java.time.LocalDate;
 
 @Stateless
 @LocalBean
@@ -79,15 +74,15 @@ public class FinalRoutManager {
         }
     }
 
-    public Time getTimeDepartureByStation(Rout rout, Station station) {
-        Time timeDeparture = getRoutSectionByRoutAndDepartureStation(rout, station) != null ?
+    public LocalTime getTimeDepartureByStation(Rout rout, Station station) {
+        LocalTime timeDeparture = getRoutSectionByRoutAndDepartureStation(rout, station) != null ?
                 getRoutSectionByRoutAndDepartureStation(rout, station).getDepartureTime() : null;
 
         return timeDeparture;
     }
 
-    public Time getTimeArrivalByStation(Rout rout, Station station) {
-        Time timeArrival = getRoutSectionByRoutAndDestinationStation(rout, station) != null ?
+    public LocalTime getTimeArrivalByStation(Rout rout, Station station) {
+        LocalTime timeArrival = getRoutSectionByRoutAndDestinationStation(rout, station) != null ?
                 getRoutSectionByRoutAndDestinationStation(rout, station).getArrivalTime(): null ;
         return timeArrival;
     }

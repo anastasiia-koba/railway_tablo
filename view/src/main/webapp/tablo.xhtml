@@ -11,12 +11,12 @@
 </h:head>
 <h:body>
     <h:form styleClass="rout-form">
-        <h:outputLabel for="inline" value="Select Station"/>
+        <h:outputLabel for="inline" value="Station"/>
         <h:selectOneMenu value="#{formBean.station}" required="true" styleClass="select">
             <f:selectItems value="#{formBean.stations}" var="station" itemLabel="#{station.name}"
                            itemValue="#{station.name}"/>
         </h:selectOneMenu>
-        <h:outputLabel for="inline" value="Select Date"/>
+        <h:outputLabel for="inline" value="Date"/>
         <p:calendar id="inline" value="#{formBean.currentDate}" mode="popup" required="true"/>
         <h:commandButton action="#{formBean.getFinalRouts}" value="Submit" styleClass="button"/>
     </h:form>

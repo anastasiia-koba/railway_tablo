@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.Set;
 
 /**
@@ -44,11 +44,11 @@ public class RoutSection extends BaseEntity {
 
     @NotNull(message = "This field is required.")
     @Column(name = "departure_time")
-    private Time departureTime;
+    private LocalTime departureTime;
 
     @NotNull(message = "This field is required.")
     @Column(name = "arrival_time")
-    private Time arrivalTime;
+    private LocalTime arrivalTime;
 
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "routSections")

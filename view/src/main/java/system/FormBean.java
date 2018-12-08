@@ -10,12 +10,10 @@ import system.ejb.StationManager;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.Date;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
@@ -32,9 +30,6 @@ public class FormBean implements Serializable {
 
     @EJB
     private FinalRoutManager finalRoutManager;
-
-//    @EJB
-//    private InMemoryStorage inMemoryStorage;
 
     private Date currentDate = new Date();
     private String station;
@@ -64,13 +59,13 @@ public class FormBean implements Serializable {
         return finalRoutManager.findByStationAndDate(st, currentDate);
     }
 
-    public Time getDepartureTime(String finalRoutId) {
+    public LocalTime getDepartureTime(String finalRoutId) {
         Station st = stationManager.findByName(station);
         Rout rt = finalRoutManager.getRoutByFinalRoutId(finalRoutId);
         return finalRoutManager.getTimeDepartureByStation(rt, st);
     }
 
-    public Time getArrivalTime(String finalRoutId) {
+    public LocalTime getArrivalTime(String finalRoutId) {
         Station st = stationManager.findByName(station);
         Rout rt = finalRoutManager.getRoutByFinalRoutId(finalRoutId);
         return finalRoutManager.getTimeArrivalByStation(rt, st);
