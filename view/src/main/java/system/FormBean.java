@@ -54,7 +54,7 @@ public class FormBean implements Serializable {
         this.currentDate = currentDate;
     }
 
-    public Set<FinalRout> getFinalRouts() {
+    public List<FinalRout> getFinalRouts() {
         Station st = stationManager.findByName(station);
         return finalRoutManager.findByStationAndDate(st, currentDate);
     }
@@ -73,9 +73,8 @@ public class FormBean implements Serializable {
 
     public String getStatus(String finalRoutId) {
         Station st = stationManager.findByName(station);
-        Rout rt = finalRoutManager.getRoutByFinalRoutId(finalRoutId);
 
-        int status = InMemoryStorage.getStatus(st.getId(), rt.getId(), currentDate);
+        int status = InMemoryStorage.getStatus(st.getId(), Long.valueOf(finalRoutId), currentDate);
         switch (status) {
             case (STATUS_ON_TIME):
                 return "on time";

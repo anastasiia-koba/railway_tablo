@@ -25,7 +25,7 @@ public class InMemoryStorage {
 
     public static int getStatus(Long station, Long rout, Date date) {
         for(JsonFromServer json: storage) {
-            if (json.getStationId().equals(station) && json.getFinalRoutId().equals(rout) && json.getDate().equals(date)) {
+            if (json.getStationId() == station && json.getFinalRoutId() == rout && json.getDate().equals(date)) {
                 return json.getStatus();
             }
         }

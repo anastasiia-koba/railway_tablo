@@ -20,14 +20,15 @@ public class FinalRoutManager {
     @PersistenceContext(unitName = "primary")
     private EntityManager em;
 
-    public Set<FinalRout> findByStationAndDate(Station station, Date date) {
-        Query q = em.createQuery("SELECT fr FROM FinalRout fr " +
+    public List<FinalRout> findByStationAndDate(Station station, Date date) {
+        Query q = em.createQuery("SELECT DISTINCT fr FROM FinalRout fr " +
                 "JOIN fr.rout.routSections rs WHERE " +
                 "(rs.destination = :station OR rs.departure = :station) AND " +
-                "fr.date = :date AND fr.deleted = false");
+                "fr.date = :date AND fr.deleted = false order by fr.rout.id");
         q.setParameter("station", station);
         q.setParameter("date", date);
-        return new HashSet<>(q.getResultList());
+
+        return q.getResultList();
     }
 
     public Rout getRoutByFinalRoutId(String str) {
